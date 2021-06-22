@@ -11,7 +11,7 @@ import mongoose, { mongo } from 'mongoose';
 // URI
 import * as DBConfig from './db';
 
-mongoose.connect(process.env.URI || DBConfig.LocalURI, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.URI || DBConfig.RemoteURI, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection; // alias for the mongoose connection
 db.on("error", function()
@@ -55,7 +55,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err:createError.HttpError, req:express.Request, res:express.Response, next: express.NextFunction) 
+app.use(function(err:createError.HttpError, req:express.Request, res:express.Response, next: express.NextFunction)
 {
   // set locals, only providing error in development
   res.locals.message = err.message;
