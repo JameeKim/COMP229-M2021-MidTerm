@@ -44,8 +44,33 @@ router.post('/add', (req, res, next) => {
     });
 });
 router.get('/:id', (req, res, next) => {
+    books_1.default.findById(req.params.id, {}, {}, (err, books) => {
+        if (err) {
+            console.error(err);
+            return next(err);
+        }
+        res.render('books/details', {
+            title: 'Edit Book',
+            page: 'book-edit',
+            books,
+        });
+    });
 });
 router.post('/:id', (req, res, next) => {
+    books_1.default.findByIdAndUpdate(req.params.id, {
+        $set: {
+            Title: req.body.title,
+            Price: Number(req.body.price),
+            Author: req.body.author,
+            Genre: req.body.genre,
+        },
+    }, (err) => {
+        if (err) {
+            console.error(err);
+            return next(err);
+        }
+        res.redirect('/books');
+    });
 });
 router.get('/delete/:id', (req, res, next) => {
 });
