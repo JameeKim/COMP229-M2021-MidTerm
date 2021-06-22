@@ -1,3 +1,12 @@
+/**
+ * Server/Models/books.ts
+ *
+ * The model for the book data
+ *
+ * Dohyun Kim 301058465
+ * COMP229-M2021-MidTerm-301058465
+ */
+
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema; // Schema alias
 

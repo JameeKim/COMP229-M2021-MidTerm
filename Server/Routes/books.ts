@@ -1,3 +1,12 @@
+/**
+ * Server/Routes/books.ts
+ *
+ * Routes for the book list
+ *
+ * Dohyun Kim 301058465
+ * COMP229-M2021-MidTerm-301058465
+ */
+
 // modules required for routing
 import express from 'express';
 const router = express.Router();

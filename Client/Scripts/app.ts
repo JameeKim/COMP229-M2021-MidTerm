@@ -1,3 +1,12 @@
+/**
+ * Scripts/app.ts
+ *
+ * Base javascript for basic functionalities
+ *
+ * Dohyun Kim 301058465
+ * COMP229-M2021-MidTerm-301058465
+ */
+
 //IIFE -- Immediately Invoked Function Expression
 "use strict";
 

@@ -1,3 +1,12 @@
+/**
+ * Server/Config/app.ts
+ *
+ * The main config for the server-side
+ *
+ * Dohyun Kim 301058465
+ * COMP229-M2021-MidTerm-301058465
+ */
+
 // moddules for node and express
 import createError from 'http-errors';
 import express from 'express';

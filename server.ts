@@ -1,3 +1,12 @@
+/**
+ * server.ts
+ *
+ * The main executable script for the server
+ *
+ * Dohyun Kim 301058465
+ * COMP229-M2021-MidTerm-301058465
+ */
+
 import createError from 'http-errors';
 import app from './Server/Config/app';
 import debug from 'debug';
