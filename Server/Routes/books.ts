@@ -7,7 +7,7 @@ export default router;
 import book from '../Models/books';
 
 /* GET books List page. READ */
-router.get('/', (req, res, next) => 
+router.get('/', (req, res, next) =>
 {
   // find all books in the books collection
   book.find( (err, books) => {
@@ -28,18 +28,32 @@ router.get('/', (req, res, next) =>
 //  GET the Book Details page in order to add a new Book
 router.get('/add', (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+  res.render('books/details', {
+    title: 'Add Book',
+    page: 'book-add',
+    books: {},
+  });
 
 });
 
 // POST process the Book Details page and create a new Book - CREATE
 router.post('/add', (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+  const newBook = new book({
+    Title: req.body.title,
+    Price: Number(req.body.price),
+    Author: req.body.author,
+    Genre: req.body.genre,
+  });
+
+  book.create(newBook, (err) => {
+    if (err) {
+      console.error(err);
+      return next(err);
+    }
+
+    res.redirect('/books');
+  });
 
 });
 
