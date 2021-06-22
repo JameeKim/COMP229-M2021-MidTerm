@@ -40,7 +40,7 @@ router.get('/add', (req, res, next) => {
   res.render('books/details', {
     title: 'Add Book',
     page: 'book-add',
-    books: {},
+    books: {}, // required by ejs; DO NOT REMOVE
   });
 
 });
@@ -69,7 +69,7 @@ router.post('/add', (req, res, next) => {
 // GET the Book Details page in order to edit an existing Book
 router.get('/:id', (req, res, next) => {
 
-  book.findById(req.params.id, {}, {}, (err, books) => {
+  book.findById(req.params.id, {}, {}, (err, foundBook) => {
     if (err) {
       console.error(err);
       return next(err);
@@ -78,7 +78,7 @@ router.get('/:id', (req, res, next) => {
     res.render('books/details', {
       title: 'Edit Book',
       page: 'book-edit',
-      books,
+      books: foundBook, // required name by ejs; DO NOT CHANGE PROPERTY NAME
     });
   });
 
@@ -89,6 +89,7 @@ router.post('/:id', (req, res, next) => {
 
   const id = req.params.id;
 
+  // deprecated, but required by the specifications
   book.update({ _id: id }, {
     Title: req.body.title,
     Price: Number(req.body.price),
