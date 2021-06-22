@@ -10,19 +10,18 @@
         if(!confirm("Are you sure?"))
         {
           event.preventDefault();
-          location.href = '/clothing-list';
-        }       
+          location.href = '/books';
+        }
       });
     }
 
     function Start():void
     {
         console.log("App Started");
-        
-        confirmDelete();  
+
+        confirmDelete();
     }
 
     window.addEventListener("load", Start);
 
 })();
-

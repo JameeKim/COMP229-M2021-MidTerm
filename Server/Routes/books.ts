@@ -98,10 +98,17 @@ router.post('/:id', (req, res, next) => {
 
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
+  const id = req.params.id;
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+  book.remove({ _id: id }, (err) => {
+    if (err) {
+      console.error(err);
+      return next(err);
+    }
+
+    res.redirect('/books');
+  });
+
 });
 
 
