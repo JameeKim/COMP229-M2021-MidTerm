@@ -57,14 +57,13 @@ router.get('/:id', (req, res, next) => {
     });
 });
 router.post('/:id', (req, res, next) => {
-    books_1.default.findByIdAndUpdate(req.params.id, {
-        $set: {
-            Title: req.body.title,
-            Price: Number(req.body.price),
-            Author: req.body.author,
-            Genre: req.body.genre,
-        },
-    }, (err) => {
+    const id = req.params.id;
+    books_1.default.update({ _id: id }, {
+        Title: req.body.title,
+        Price: Number(req.body.price),
+        Author: req.body.author,
+        Genre: req.body.genre,
+    }, {}, (err) => {
         if (err) {
             console.error(err);
             return next(err);

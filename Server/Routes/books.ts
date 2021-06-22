@@ -78,14 +78,14 @@ router.get('/:id', (req, res, next) => {
 // POST - process the information passed from the details form and update the document
 router.post('/:id', (req, res, next) => {
 
-  book.findByIdAndUpdate(req.params.id, {
-    $set: {
-      Title: req.body.title,
-      Price: Number(req.body.price),
-      Author: req.body.author,
-      Genre: req.body.genre,
-    },
-  }, (err) => {
+  const id = req.params.id;
+
+  book.update({ _id: id }, {
+    Title: req.body.title,
+    Price: Number(req.body.price),
+    Author: req.body.author,
+    Genre: req.body.genre,
+  }, {}, (err) => {
     if (err) {
       console.error(err);
       return next(err);
@@ -98,6 +98,7 @@ router.post('/:id', (req, res, next) => {
 
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
+
   const id = req.params.id;
 
   book.remove({ _id: id }, (err) => {
